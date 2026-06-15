@@ -1,0 +1,234 @@
+/* Tipografía de la marca (Nunito Sans) para la interfaz */
+@font-face {
+    font-family: "Nunito Sans";
+    src: url("docs/NunitoSans-VariableFont_YTLC,opsz,wdth,wght.ttf") format("truetype");
+    font-weight: 200 1000;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    background: #eef2f5;
+    font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+}
+
+/* Logo en el encabezado de la app y vista previa en configuración */
+.logo-app {
+    display: block;
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+    background: #fff;
+    padding: 10px 16px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+}
+
+.logo-preview {
+    display: block;
+    max-width: 240px;
+    width: 100%;
+    height: auto;
+    margin: 10px 0;
+    background: #f3f4f6;
+    padding: 8px;
+    border-radius: 8px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+.header {
+    background: #333333;
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.header button {
+    margin-top: 15px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, .5);
+    color: white;
+    transition: background .2s, border-color .2s;
+}
+
+.header button:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, .12);
+    border-color: rgba(255, 255, 255, .8);
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .08);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+input:not([type="checkbox"]),
+textarea,
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+/* Grupo etiqueta + campo, con espaciado uniforme entre filas */
+.field {
+    margin-bottom: 14px;
+}
+
+button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #333333;
+    color: white;
+    font-size: 14px;
+}
+
+button:hover {
+    opacity: .9;
+}
+
+.hidden {
+    display: none;
+}
+
+.section-title {
+    margin-top: 0;
+    color: #333333;
+}
+
+.photo-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-top: 15px;
+}
+
+.photo-card img {
+    max-width: 300px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+    background: #b91c1c;
+}
+
+.small {
+    color: #666;
+    font-size: .9em;
+}
+
+canvas {
+    border: 1px solid #ccc;
+    background: white;
+    border-radius: 6px;
+    max-width: 100%;
+    height: auto;
+    touch-action: none;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* Checkbox: tamaño normal y color de acento de la marca */
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #3CB54D;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+/* Etiquetas que envuelven un checkbox (plagas, actividades, productos):
+   se muestran como una fila clicable, no como título en negrita */
+.chk-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    margin-bottom: 8px;
+    padding: 8px 10px;
+    font-weight: normal;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.chk-label:hover {
+    background: #f3f4f6;
+}
+
+/* En una fila con botón Eliminar, el margen lo da la propia fila */
+.item-row .chk-label {
+    margin-bottom: 0;
+}
+
+.item-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.item-row button {
+    padding: 5px 10px;
+}
+
+/* =========================
+   AJUSTES PARA CELULAR
+========================= */
+
+@media (max-width: 600px) {
+    body {
+        padding: 12px;
+    }
+
+    .card,
+    .header {
+        padding: 16px;
+    }
+
+    /* Botones a todo el ancho para tocarlos fácil con el dedo... */
+    button {
+        width: 100%;
+    }
+
+    /* ...salvo los pequeños de "Eliminar" en las filas y el de configuración */
+    .item-row button,
+    .header button {
+        width: auto;
+    }
+}

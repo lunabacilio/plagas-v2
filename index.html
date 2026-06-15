@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Control de Plagas V3.2.1</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="brand.js?v=5"></script>
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Encabezado -->
+        <div class="header">
+            <img id="logoApp" class="logo-app" alt="Logo">
+            <h2 id="empresaTitulo">Empresa no configurada</h2>
+            <div id="empresaResumen"></div>
+            <button onclick="toggleConfiguracion()">⚙ Configuración de empresa</button>
+        </div>
+
+        <!-- Configuración de empresa -->
+        <div id="panelEmpresa" class="card hidden">
+            <h3 class="section-title">Datos de la empresa</h3>
+
+            <div class="field">
+                <label>Nombre de la empresa</label>
+                <input id="empNombre" placeholder="Nombre">
+            </div>
+
+            <div class="field">
+                <label>Dirección</label>
+                <input id="empDir" placeholder="Dirección">
+            </div>
+
+            <div class="field">
+                <label>Teléfono</label>
+                <input id="empTel" placeholder="Teléfono">
+            </div>
+
+            <div class="field">
+                <label>Correo electrónico</label>
+                <input id="empMail" placeholder="Correo">
+            </div>
+
+            <div class="field">
+                <label>No. de licencia</label>
+                <input id="empLic" placeholder="Licencia">
+            </div>
+
+            <div class="field">
+                <label>Logo (aparece en el membrete del PDF)</label>
+                <input type="file" id="empLogo" accept="image/*">
+                <img id="empLogoPreview" class="logo-preview" alt="Vista previa del logo">
+                <button type="button" class="delete-btn" id="empLogoQuitar" onclick="quitarLogo()">Quitar logo y usar el de la marca</button>
+            </div>
+
+            <button onclick="guardarEmpresa()">Guardar datos</button>
+        </div>
+
+        <!-- Servicio -->
+        <div class="card">
+            <h3 class="section-title">Servicio</h3>
+
+            <div class="field">
+                <label>Cliente</label>
+                <input id="cliente" placeholder="Nombre del cliente">
+            </div>
+
+            <div class="field">
+                <label>Fecha</label>
+                <input id="fecha" type="date">
+            </div>
+
+            <div class="field">
+                <label>Técnico aplicador</label>
+                <input id="tecnico" placeholder="Nombre del técnico aplicador">
+            </div>
+
+            <div class="field">
+                <label>Firma del técnico</label>
+                <canvas id="firmaCanvas" width="500" height="180"></canvas>
+            </div>
+
+            <button type="button" onclick="limpiarFirma()">Limpiar firma</button>
+        </div>
+
+        <!-- Plagas -->
+        <div class="card">
+            <h3 class="section-title">Plagas sujetas a control</h3>
+
+            <div id="plagasBase" class="grid"></div>
+
+            <div class="field">
+                <input id="nuevaPlaga" placeholder="Agregar otra plaga">
+            </div>
+
+            <div class="field">
+                <button onclick="agregarPlaga()">Agregar plaga</button>
+            </div>
+
+            <div id="plagasExtra"></div>
+        </div>
+
+        <!-- Productos -->
+        <div class="card">
+            <h3 class="section-title">Productos utilizados</h3>
+
+            <div class="field">
+                <input id="nuevoProducto" placeholder="Agregar producto">
+            </div>
+
+            <div class="field">
+                <button onclick="agregarProducto()">Agregar producto</button>
+            </div>
+
+            <div id="catalogoProductos"></div>
+        </div>
+
+        <!-- Actividades -->
+        <div class="card">
+            <h3 class="section-title">Actividades realizadas</h3>
+
+            <div id="actividadesBase" class="grid"></div>
+
+            <div class="field">
+                <input id="nuevaActividad" placeholder="Agregar actividad">
+            </div>
+
+            <div class="field">
+                <button onclick="agregarActividad()">Agregar actividad</button>
+            </div>
+
+            <div id="actividadesExtra"></div>
+        </div>
+
+        <!-- Hallazgos -->
+        <div class="card">
+            <h3 class="section-title">Hallazgos</h3>
+            <textarea id="hallazgos" placeholder="Describa los hallazgos"></textarea>
+        </div>
+
+        <!-- Recomendaciones -->
+        <div class="card">
+            <h3 class="section-title">Recomendaciones</h3>
+            <textarea id="recomendaciones" placeholder="Describa las recomendaciones"></textarea>
+        </div>
+
+        <!-- Anexo fotográfico -->
+        <div class="card">
+            <h3 class="section-title">Anexo fotográfico</h3>
+            <div class="field">
+                <input type="file" id="selectorFotos" accept="image/*" multiple>
+            </div>
+            <div id="contenedorFotos"></div>
+        </div>
+
+        <!-- Generar PDF -->
+        <div class="card">
+            <button onclick="generarPDF()">📄 Generar PDF</button>
+        </div>
+
+    </div>
+
+    <script src="app.js?v=5"></script>
+</body>
+
+</html>
